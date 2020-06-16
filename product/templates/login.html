@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+
+<h2 class="my-5 h2 text-center">Login</h2>
+
+<!-- <h3>Login </h3> -->
+<form method="post" action="">
+          {% csrf_token %}
+          <!-- <div class="md-form mb-5"> -->
+            <div class="group-input">
+
+          <label for="username">Username:</label>
+          <input type="text" name="username" placeholder="Username">
+        <!-- </div>  -->
+          
+ 
+<label for="password">Password:</label>
+          <input type="password" name="password" placeholder="Password">
+
+<input type="submit"class="site-btn login-btn" name="" value="Login">
+</form>
+<!-- <a href="{% url 'product:register' %}" >SIGN UP</a> -->
+{% endblock content %}
+
+

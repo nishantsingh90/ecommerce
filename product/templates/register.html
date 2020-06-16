@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+<h2 class="my-5 h2 text-center">Register</h2>
+<!-- <h3>Register For A New Account</h3> -->
+<form method="POST" action="">
+    {% csrf_token%}
+    <!-- {{form.as_p}} -->
+    <!-- {% for field in form%}
+    <p>{{field.label}}
+    {{field}}</p>
+    {%endfor%} -->
+    <div class="group-input">
+
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="Username">
+      </div> 
+
+
+  <div class="group-input">      
+ <label for="password1">Password:</label>
+        <input type="password" name="password1" placeholder="Password">
+<label for="password2">Password confirmation:</label>
+        <input type="password" name="password2" placeholder="Password">
+
+
+    <input type="submit" class="site-btn login-btn"name="Create User">
+</form> 
+{% endblock content %}

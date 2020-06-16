@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+  
+  .product-price {
+    font-size: 24px;
+    font-weight: 600;
+}
+.product-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #656565;
+}
+  </style>
+    <title>Inventory</title>
+  
+  
+    
+  
+  
+  
+  {% load static %}
+  
+  <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/> 
+  <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}"/>
+   <!-- <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"> 
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+   
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> 
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+</head>
+<!-- <style>
+product-name:hover, product-name:focus {
+  color: #000;
+  text-decoration: none;
+}
+</style> -->
+  
+
+
+{% load cart_template_tags %}
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+  <a href="{% url 'product:index' %}" class="navbar-brand" href="#"><img src="/images/previewq.jpg"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li> -->
+      <!-- <li class="nav-item dropdown"> -->
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+        </a>
+        <!-- <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="#">ALL ITEMS</a>
+          <a class="dropdown-item" href="#"> CATEGORY</a>
+          <a class="dropdown-item" href="#"></a>
+        </div> -->
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <!-- <li class="nav-item"> -->
+        <a class="nav-link waves-effect waves-light">
+          <i class=""></i>
+        </a>
+      </li>
+      {% if request.user.is_authenticated %}
+      <!-- <li class="nav-item"> -->
+        
+        <a class="nav-link waves-effect waves-light">
+          <span class="badge red z-depth-1 mr-1">{{ request.user|cart_item_count }}</span>
+          
+          <i class="fas fa-shopping-cart"></i>
+          
+          
+        </a>
+      </li>
+      <!-- <li class="nav-item dropdown"> -->
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+          aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="">{{request.user|upper}}</a>
+          <a class="dropdown-item" href="{% url 'product:logout' %}">LOGOUT</a>
+          {% else %}
+          <a class="dropdown-item" href="{% url 'product:register' %}">REGISTER</a>
+          <a class="dropdown-item" href="{% url 'product:login' %}">LOGIN</a>
+          
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<body>
+    <div class="mt-30 pt-25">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+{% block content %}
+{% endblock content %}
+</body>
